@@ -1,13 +1,17 @@
-import React from 'react'
+"use client";
+import React, { useEffect, useState } from "react";
+import GetStarted from "./GetStarted";
+import Homes from "./Home";
 
-type Props = {}
+const HomePage: React.FC = () => {
+  const [user, setUser] = useState<string | null>(null);
 
-const HomePage = (props: Props) => {
-  return (
-    <div>
-      <h1>hi</h1>
-    </div>
-  )
-}
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    setUser(storedUser);
+  }, []);
 
-export default HomePage
+  return <div>{user ? <Homes /> : <GetStarted />}</div>;
+};
+
+export default HomePage;

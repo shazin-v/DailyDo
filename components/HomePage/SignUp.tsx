@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -10,13 +9,6 @@ const SignUp = (props: Props) => {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <Image
-          width={100}
-          height={100}
-          alt="Your Company"
-          src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-          className="mx-auto h-10 w-auto"
-        />
         <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
           Sign up to your account
         </h2>
@@ -51,14 +43,7 @@ const SignUp = (props: Props) => {
               >
                 Password
               </label>
-              <div className="text-sm">
-                <Link
-                  href="/forgot-password"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot password?
-                </Link>
-              </div>
+              <div className="text-sm"></div>
             </div>
             <div className="mt-2">
               <input
