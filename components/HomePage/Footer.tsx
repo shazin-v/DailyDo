@@ -13,9 +13,9 @@ export default function Footer() {
         </div>
 
         <div className="flex space-x-3 mt-4 md:mt-0">
-          {process.env.NEXT_PUBLIC_PORTFOLIO_URL && (
+          {/* {process.env.NEXT_PUBLIC_PORTFOLIO_URL && ( */}
             <a
-              href={process.env.NEXT_PUBLIC_PORTFOLIO_URL}
+              href={process.env.NEXT_PUBLIC_PORTFOLIO_URL || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded hover:scale-110 transition"
@@ -25,10 +25,10 @@ export default function Footer() {
                 className="text-white text-xl w-5 h-5"
               />
             </a>
-          )}
-          {process.env.NEXT_PUBLIC_LINKEDIN_URL && (
+          {/* )} */}
+          {/* {process.env.NEXT_PUBLIC_LINKEDIN_URL && ( */}
             <a
-              href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
+              href={process.env.NEXT_PUBLIC_LINKEDIN_URL || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded hover:scale-110 transition"
@@ -38,10 +38,10 @@ export default function Footer() {
                 className="text-white text-xl  w-5 h-5"
               />
             </a>
-          )}
-          {process.env.NEXT_PUBLIC_GITHUB_URL && (
+          {/* )} */}
+          {/* {process.env.NEXT_PUBLIC_GITHUB_URL && ( */}
             <a
-              href={process.env.NEXT_PUBLIC_GITHUB_URL}
+              href={process.env.NEXT_PUBLIC_GITHUB_URL || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 flex items-center justify-center bg-gray-700 rounded hover:scale-110 transition"
@@ -51,7 +51,7 @@ export default function Footer() {
                 className="text-white text-xl  w-5 h-5"
               />
             </a>
-          )}
+          {/* )} */}
         </div>
       </div>
     </footer>
