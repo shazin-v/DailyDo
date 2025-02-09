@@ -12,20 +12,14 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <div className="bg-gray-400 py-4 shadow-lg">
+    <div className="bg-black py-4 shadow-lg text-white">
       <div className="container mx-auto flex justify-between w-[98%] items-center ">
         <h1>DailyDo</h1>
         <div className="space-x-6">
           <button onClick={() => router.push("/")} className="">
             Home
           </button>
-          {user ? (
-            <button>My Task</button>
-          ) : (
-            <button onClick={() => router.push("/login")} className="">
-              Login
-            </button>
-          )}
+
           {user ? (
             <button>Logout</button>
           ) : (

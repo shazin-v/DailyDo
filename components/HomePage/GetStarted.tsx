@@ -14,7 +14,7 @@ const GetStarted = () => {
             <span className="text-[#0184fc]">DailyDo!</span>
           </h1>
           <button
-            onClick={() => router.push("/login")}
+            onClick={() => router.push("/signup")}
             className="bg-[#0184fc] text-white p-4 hover:bg-[#0184fc]/90 rounded-md m-6"
           >
             Get Started

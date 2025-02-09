@@ -1,83 +1,89 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import Link from "next/link";
+"use client";
 import React from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "../ui/button";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { FormData } from "@/utils/types";
 
-type Props = {};
+const SignUp = () => {
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    mode: "onChange",
+  });
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+    localStorage.setItem("user", data.email);
+    router.push("/");
+  };
 
-const SignUp = (props: Props) => {
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-          Sign up to your account
-        </h2>
-      </div>
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+              Sign up to your account
+            </h2>
+          </div>
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form action="#" method="POST" className="space-y-6">
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm/6 font-medium text-gray-900"
-            >
-              Email address
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
+          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label htmlFor="email">Email</Label>
+              <Input
                 type="email"
-                required
-                autoComplete="email"
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                id="email"
+                placeholder="Enter Your Email"
+                {...register("email", {
+                  required: true,
+                  pattern: /^\S+@\S+$/i,
+                })}
               />
+              {errors?.email && (
+                <span className="text-red-500">Email is required</span>
+              )}
             </div>
-          </div>
 
-          <div>
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm/6 font-medium text-gray-900"
-              >
-                Password
-              </label>
-              <div className="text-sm"></div>
-            </div>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label htmlFor="password">Password</Label>
+              <Input
                 type="password"
-                required
-                autoComplete="current-password"
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                id="password"
+                placeholder="Enter Your Password"
+                {...register("password", {
+                  required: "password is required",
+                })}
               />
+              {errors?.password && (
+                <span className="text-red-500">Password is required</span>
+              )}
             </div>
-          </div>
 
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign in
-            </button>
-          </div>
-        </form>
+            <div>
+              <Button type="submit" className="w-full">
+                {" "}
+                Sign Up
+              </Button>
+            </div>
 
-        <p className="mt-10 text-center text-sm/6 text-gray-500">
+            {/* <p className="mt-10 text-center text-sm/6 text-gray-500">
           Already a member?{" "}
           <Link
-            href="/login"
-            className="font-semibold text-indigo-600 hover:text-indigo-500"
+          href="/login"
+          className="font-semibold text-indigo-600 hover:text-indigo-500"
           >
-            Log In
+          Log In
           </Link>
-        </p>
-      </div>
-    </div>
+          </p> */}
+          </div>
+        </div>
+      </form>
+    </>
   );
 };
 
