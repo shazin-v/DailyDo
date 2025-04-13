@@ -11,6 +11,12 @@ const Navbar = () => {
   }, []);
   const router = useRouter();
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    router.push("/");
+  };
+
   return (
     <div className="bg-black py-4 shadow-lg text-white">
       <div className="container mx-auto flex justify-between w-[98%] items-center ">
@@ -21,7 +27,7 @@ const Navbar = () => {
           </button>
 
           {user ? (
-            <button>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           ) : (
             <button onClick={() => router.push("/signup")} className="">
               Register
